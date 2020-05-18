@@ -60,10 +60,12 @@ export class CanvasWidget extends React.Component<DiagramProps> {
 		});
 
 		this.keyDown = event => {
-			this.props.engine.getActionEventBus().fireAction({ event });
+			if(event.buttons === 0)
+				this.props.engine.getActionEventBus().fireAction({ event });
 		};
 		this.keyUp = event => {
-			this.props.engine.getActionEventBus().fireAction({ event });
+			if(event.buttons === 0)
+				this.props.engine.getActionEventBus().fireAction({ event });
 		};
 
 		document.addEventListener('keyup', this.keyUp);
